@@ -1,0 +1,70 @@
+---
+title: "Zero"
+description: "a first post!"
+image: "/img/assets/IMG_5399.jpg"
+author: "Aathreya Kadambi"
+date: "February 9, 2025"
+---
+
+# Zero
+**Aathreya Kadambi**<br/>
+**February 9, 2025**
+
+
+Welcome to the blog! This is a first post to demonstrate some of the capabilities of blogging via Astro with markdown. While doing so, we'll get started with some of the fundamental ideas we'll need this semester. For that reason, this will probably be a very long post, but in the future, posts may be of all different lengths.
+
+### Linear Algebra
+
+#### A Brief Introduction
+
+Linear algebra is sometimes said to be the only topic which we fully understand in the mathematics world. But even is "linear algebra"?
+
+The word "linear", roughly speaking, means "straight". At least, this is a good intuition to have. For example, all straight lines and planes are "linear". Great! But... intuition only gets us so far. That's where "algebra" comes in. "Algebra" is the art of abstraction: assigning names to things we do not know, and using their properties to learn more about them.
+
+How do we describe linear things? Well, one perspective is to look at linear *functions* (which pass through zero). For example,
+<center>$$f(x) = mx$$.</center>
+This is "linear", as we can see by looking at its graph: (it looks straight)
+<center>
+<iframe src="https://www.desmos.com/calculator/3spvbvrbsl?embed" width="300" height="300" style="border: 1px solid #ccc"></iframe>
+</center>
+It turns out that there is a purely "algebraic" way to determine that this is a line! It is from the fact that
+<center>$$f(x+y) = f(x) + f(y)$$.</center>
+We can check this: (it follows from the distributive property of $\R$)
+<center>$$f(x+y) = m(x+y) = mx+my = f(x) + f(y).$$</center>
+Why does having this property guarantee linearity? We can see why at least for functions from $\R$ to $\R$. First of all,
+<center>$$f(0+0) = f(0) + f(0) \Rightarrow f(0) = 2f(0) \Rightarrow 0 = f(0)$$</center>
+so $f(0) = 0$, and if we let $f(1) = m$, (I'm foreshadowing)
+<center>$$f(x+1) = f(x) + f(1) = f(x) + m$$</center>
+so we know that to get from $f(x)$ to $f(x+1)$, we must add $m$. If $f$ is continuous, then this actually means that $f(x) = mx$. If you're curious about the details, please see <a href="https://intheunsolved.wordpress.com/2019/11/09/cauchy-equations/">this blog post</a>.
+
+So we have a **geometric** view of linearity: straightness, and an **algebraic** view: distributivity. Linear algebra is all about connecting these two perspectives in many more ways.
+
+#### Why Study Linear Algebra?
+
+So far I have explained what linear algebra is, but why should data scientists care?
+
+There are many ideas from linear algebra that are extremely useful in data science, but here are two we will highlight in this post:
+- **Linear Independence:** In many cases, we want to know if our data is redundant. Checking for **linear dependence** or **multicollinearity** allow us to determine one type of redundance. In many cases, having independent features or data really improves model performance.
+- **Singular Value Decomposition:** Given a matrix $A$ (or two dimensional table of data), one can decompose it into a product of three things: $A = U\Sigma V^T$. While I won't go too deep into what each thing is here, it turns out that this decomposition helps us find "how valuable" each feature or column is in our matrix. This can be important for **dimensionality/feature reduction**: simplifying our problem by removing less important data.
+
+### Calculus Revisited
+
+#### Why Calculus?
+
+Calculus is the study derivatives and integrals. Why would that matter to a data scientist? Actually, derivatives and integration are at the heart of **optimization problems**, which every data scientist should care about. Often, we want to do something the **right** way, "right" and "wrong" being specified via a **reward function** or a **loss function**. We would then want to maximize or minimize (generally, "optimize") these functions.
+
+Again, there are many important ideas, but here are two:
+- **Derivative/Gradient:** A derivative tells us how fast things are changing. A gradient, which is generalized to higher dimensions, tells us information about the direction of greatest increase. To get to the top of a hill, you must go upwards. Similarly, to get to the maximum of a function, we go in the direction of the gradient, called **gradient ascent**. Similarly, to get to the minimum, we use **gradient descent**, by going in the opposite direction. Maxima and minima must also satisfy that their derivatives/gradients are zero. So in practice, we can optimize via gradient ascent or descent.
+- **Convexity:** Convexity is the geometric property that ensures that we will actually have minima or maxima, so we aren't on a wild goose chase. Second derivatives, and generally Hessians, can tell us about convexity!
+
+Since optimization comes up everywhere, especially machine learning, calculus is a very important tool for data scientists.
+
+#### Connection to Linearity
+
+Interestingly, derivatives are linear! We can see this from the algebraic property:
+<center> $$\frac{d}{dx}(f+g) = \frac{d}{dx}f +\frac{d}{dx}g$$.</center>
+This is nice, since as we mentioned, we understand linear things quite well. Derivatives, generally speaking, are exteremely related to "tangents", which are the best linear approximations to shapes and functions. 
+
+### Conclusions
+
+Math is extremely useful to data scientists, for developing intuition and understanding why models work. I hope you got something interesting from this post, either math or how to use $\LaTeX$ and embeds in an Astro MDX file! See you soon!

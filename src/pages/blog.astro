@@ -2,7 +2,7 @@
 import Basic from '../layouts/Basic.astro';
 
 import Navbar from '../components/Navbar.astro'
-import Hero from '../components/Hero.astro'
+import Card from '../components/Card.astro'
 import Footer from '../components/Footer.astro'
 ---
 
@@ -11,6 +11,10 @@ import Footer from '../components/Footer.astro'
 	<div id="idx-main">
 
 		<p>welcome to our blog!</p>
+
+        <div id="blogpage">
+            <Card title="Zero" blurb="a first post!" image=url("/src/assets/IMG_5399.jpg") slug="blog/zero" ></Card>
+        </div>
 
 		<Footer />
 	</div>

@@ -1,0 +1,54 @@
+---
+const { title, blurb, image, slug } = Astro.props;
+---
+
+<a class="card" href={slug}>
+    <strong>{title}</strong>
+    <p>{blurb}</p>
+</a>
+
+<style define:vars={{ image }}>
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; 
+
+        width: 200px;
+        height: 330px;
+
+        padding: 0px 20px;
+        border-radius: 20px;
+
+        margin: 4%;
+        padding-top: 5%;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+
+        transform-style: preserve-3d;
+        transition: 250ms ease-in-out;
+
+        cursor: pointer;
+        perspective: 1000px;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 20px;
+        background-image: var(--image);
+        background-size: cover; /* This stretches the image */
+        background-position: center;
+        opacity: 0.1; /* Adjust opacity */
+        z-index: -1; /* Ensure text/content is on top */
+    }
+
+    a.card {
+        text-decoration: none;
+    }
+</style>
