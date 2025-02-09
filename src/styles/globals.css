@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&family=Syne:wght@400;500;600;700&display=swap');
+
+/* Taken from Kelly Tran's website :D */
+:root {
+    --primary-background: #FFFCF5;
+    --secondary-background: #91ac84;
+    --card-background: #5c7d6d;
+    --card-2-background: #6D9481;
+    --card-3-background: #91ac84;
+    --toggle-bg: #f4d1e2;
+    --toggle-bg-2: #dcafc5;
+    --primary-text-color: #4B4841;
+    --secondary-text-color: #6D9481;
+    --accent-text-color: #6A0B44;
+    --hover-text-color: #08605F;
+    --card-text-color: #FFFCF5;
+    --icon-color: #5c7d6d;
+    --beige: #FFFCF5;
+    --black: #262626;
+    --grey: #585555;
+    --dark-pink: #6A0B44;
+    --mint-green: #D0E2C7;
+    --light-green: #6D9481;
+    --sage-green: #91ac84;
+    --green: #5c7d6d;
+    --rose: #f4d1e2;
+    --yellow: #EC9A29;
+    --cyan: #08605F;
+    --cherry-blossom: #F6C1C3;
+    --record-border: #37644e; 
+    --dark-purple: #343334;
+}
+
+/* Taken from Kelly Tran's Website :D */
+[data-theme="dark"] {
+    --primary-text-color: #FFFCF5;
+    --secondary-text-color: #f4d1e2;
+    --primary-background: #5c7d6d;
+    --secondary-background: #D0E2C7;
+    --card-background: #5c7d6d;
+    --card-2-background: #6D9481;
+    --card-3-background: #91ac84;  
+    --card-text-color: #FFFCF5;
+    --accent-text-color: #F6C1C3;
+    --hover-text-color: #6A0B44;
+    --toggle-bg: #08605F;
+    --icon-color: #FFFCF5;
+    --record-border: #795a7a; 
+    --card-text-color: #FFFCF5;
+}
+
+body {
+    background: var(--primary-background);
+}
+
+html, body, p, span {
+    font-family: Syne, sans-serif;
+    font-size: 18px;
+}
+
+strong {
+    color: var(--accent-text-color);
+    font-weight: 800;
+    font-style: italic;
+    transition: .3s ease-in-out;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: var(--secondary-text-color);
+    font-family: 'Syne', sans-serif;
+}
+
+h2 {
+    font-size: 2rem;
+    font-family: 'Syne Mono', monospace; 
+}
+
+h3 {
+    font-size: 1.75em;
+    font-family: 'Syne Mono', monospace; 
+}
+
+h4 {
+    font-size: 1.5em;
+    font-family: 'Syne Mono', monospace; 
+}
+
+a {
+    font-family: Syne Mono, monospace;
+    color: var(--primary-text-color);
+}
+
+#h1 {
+    font-size: 2.5rem;
+    color: var(--secondary-text-color);
+    font-family: 'Syne', sans-serif;
+}
+
+#h2 {
+    font-size: 1.5rem;
+    font-family: 'Syne Mono', monospace; 
+}

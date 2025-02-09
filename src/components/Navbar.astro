@@ -1,0 +1,39 @@
+---
+import Logo from './Logo.astro'
+---
+
+<div id="navbar">
+    <Logo />
+    <div id="nav">
+        <a href="/">home</a>
+        <a href="/blog">blog</a>
+        <a href="/calendar">calendar</a>
+        <a href="/resources">resources</a>
+        <a href="https://www.gradescope.com/courses/980682" target="_blank">gradescope</a>
+    </div>
+</div>
+
+<style>
+	#navbar {
+        margin-left: 10%;
+        margin-right: 10%;
+        padding-top: 20px;
+        padding-bottom: 5%;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+    }
+
+    #nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 20px;
+        text-align: center;
+    }
+
+    #nav > a {
+        margin-top: auto;
+        font-size: 18px;
+        text-decoration: none;
+    }
+</style>

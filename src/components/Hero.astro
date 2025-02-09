@@ -1,0 +1,32 @@
+---
+import hero_image from '../assets/IMG_5399.jpg'
+---
+
+<div id="hero">
+    <div id="herotext">
+        <h3>hi! welcome to</h3>
+        <h1>Cranberry Juice</h1>
+        <h4>SAAS's Spring 2025 education blog, where we'll talk about <strong>statistics</strong>, <strong>data science</strong>, and <strong>machine learning</strong>.</h4>
+    </div>
+    <div id="heroright">
+        <img id="heroimage" src={hero_image.src} />
+    </div>
+</div>
+
+<style>
+    #hero {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 5%;
+        margin-bottom: 5%;
+    }
+
+    #heroright {
+        display: flex;
+        align-items: center;
+    }
+
+    #heroimage {
+        width: 100%;
+    }
+</style>

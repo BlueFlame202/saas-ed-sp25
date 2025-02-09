@@ -1,11 +1,27 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Basic from '../layouts/Basic.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro'
+import Hero from '../components/Hero.astro'
+import Footer from '../components/Footer.astro'
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Basic>
+	<Navbar />
+	<div id="idx-main">
+		<Hero />
+
+		<p>Through our curriculum for data foundations, we aim to survey many topics relevant to today's data scientists, from the relevant tools from mathematics and computer science to applicable modeling techniques, such as linear regression, nearest neighbors, neural networks, and more.</p>
+
+		<p>Check out SAAS's website here: <a href="https://saas.studentorg.berkeley.edu/">Teleport!</a></p>
+
+		<Footer />
+	</div>
+</Basic>
+
+<style>
+	#idx-main {
+		margin-left: 15%;
+		margin-right: 15%;
+	}
+</style>
