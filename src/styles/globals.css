@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&family=Syne:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 /* Taken from Kelly Tran's website :D */
 :root {
@@ -55,7 +55,7 @@ body {
 }
 
 html, body, p, span {
-    font-family: Syne, sans-serif;
+    font-family: Outfit, sans-serif;
     font-size: 18px;
 }
 
@@ -69,36 +69,36 @@ strong {
 h1 {
     font-size: 3.5rem;
     color: var(--secondary-text-color);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Outfit', sans-serif;
 }
 
 h2 {
     font-size: 2rem;
-    font-family: 'Syne Mono', monospace; 
+    font-family: 'Outfit Mono', monospace; 
 }
 
 h3 {
     font-size: 1.75em;
-    font-family: 'Syne Mono', monospace; 
+    font-family: 'Outfit Mono', monospace; 
 }
 
 h4 {
     font-size: 1.5em;
-    font-family: 'Syne Mono', monospace; 
+    font-family: 'Outfit Mono', monospace; 
 }
 
 a {
-    font-family: Syne Mono, monospace;
+    font-family: Outfit Mono, monospace;
     color: var(--primary-text-color);
 }
 
 #h1 {
     font-size: 2.5rem;
     color: var(--secondary-text-color);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Outfit', sans-serif;
 }
 
 #h2 {
     font-size: 1.5rem;
-    font-family: 'Syne Mono', monospace; 
+    font-family: 'Outfit Mono', monospace; 
 }
