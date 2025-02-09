@@ -51,6 +51,7 @@
 
 body {
     background: var(--primary-background);
+    width: 100%;
 }
 
 html, body, p, span {
