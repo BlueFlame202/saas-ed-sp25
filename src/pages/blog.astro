@@ -13,7 +13,8 @@ import Footer from '../components/Footer.astro'
 		<p>welcome to our blog!</p>
 
         <div id="blogpage">
-            <Card title="Zero" blurb="a first post!" image=url("/IMG_5399.jpg") slug="blog/zero" ></Card>
+            <Card title="MSE Min" blurb="why does MSE have a minimum?" image=url("/mse-min.png") slug="blog/mse-min" ></Card>
+			<Card title="Zero" blurb="a first post!" image=url("/IMG_5399.jpg") slug="blog/zero" ></Card>
         </div>
 
 		<Footer />
@@ -21,6 +22,13 @@ import Footer from '../components/Footer.astro'
 </Basic>
 
 <style>
+	#blogpage {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: auto;
+		gap: 10px;
+	}
+
 	#idx-main {
 		margin-left: 15%;
 		margin-right: 15%;
