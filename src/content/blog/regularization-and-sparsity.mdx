@@ -1,0 +1,44 @@
+---
+title: "Regularization and Sparsity"
+description: "Why does L1 induce sparsity?"
+author: "Aathreya Kadambi"
+date: "March 25, 2025"
+---
+
+# Regularization and Sparsity
+**Aathreya Kadambi**<br/>
+**March 25, 2025**
+
+One of the most interesting difference between $L^1$ and $L^2$ when used as regularization terms is that $L^1$ induces sparsity, while $L^2$ doesn't. Why is this the case?
+
+We already saw an intuitive explanation for why in lecture: the geometric perspective. If we draw out $L^1$, it looks like this:
+<center>
+<iframe src="https://www.desmos.com/calculator/v9vcsyjxmc?embed" width="500" height="500" style="border: 1px solid #ccc"></iframe>
+</center>
+This is one contour of $L^1$, so we can imagine the gradient being perpendicular to these lines (see the blue curves). Since the gradient then points in a direction angled 45 degrees in the $xy$-plane (or 135, or 225, or 315), any point on this contour will flow in a direction that will make it hit an axis before it hits the origin. On the other hand, for $L^2$, it looks like this:
+<center>
+<iframe src="https://www.desmos.com/calculator/swjs4vucs9?embed" width="500" height="500" style="border: 1px solid #ccc"></iframe>
+</center>
+so that the gradients will point towards the origin, and so points will not hit axes before the origin.
+
+When we hit axes, we are setting a coordinate to zero. As we set many coordinates to zero with $L^1$ regularization, we say that we *"induce sparsity"*.
+
+The above explanation is great, but it is cheating a bit. It fails to consider the impact of the main loss function! In most cases, we won't just have a regularization term without an actual loss term. There is actually another graphical explanation of this, which Arnav showed in class. It can also be found in the book *Elements of Statistical Learning*, and <a href="https://stats.stackexchange.com/questions/45643/why-l1-norm-for-sparse-models">this StackExchange post</a>
+
+We can also derive this more algebraically. Suppose we have some vector of data $x$, parameters $\theta$, and a loss given by:
+<center>$$L(x,\theta) = f(x,\theta) + \lambda \|\theta\|_{L^2}$$</center>
+One can then ask, what happens as we decrease $L$? In theory, at the minimum of $L$, we must have:
+<center>$$0 = \nabla_\theta L(x,\theta) = \nabla_\theta f(x,\theta) + \nabla_\theta (\lambda \|\theta\|_{L^2}) = \nabla_\theta f(x,\theta) +2\lambda \theta$$</center>
+and now we see that:
+<center>$$\theta = -\dfrac{1}{2\lambda}\nabla_\theta f(x,\theta) \Rightarrow \theta_i = -\dfrac{1}{2\lambda}\partial_{\theta_i} f(x,\theta)$$</center>
+In other words, we expect the gradient of $f$ to be proportional to $\theta$. But this equation also tells as another story: the right hand side is proportional to the direction of descent, so that the direction of descent of $f$ is in the same direction as $\theta$. In other words, $L^2$ balances $\theta_i$ with minimizing $f$, rather than inducing sparsity. This is a similar sort of picture to what we saw above, and is certainly a point of interesting discussion.
+
+On the other hand, if we had a loss with $L^1$,
+<center>$$L(x,\theta) = f(x,\theta) + \lambda \|\theta\|_{L^1}$$</center>
+so that at a minimum,
+<center>$$0 = \nabla L(x,\theta) = \nabla_\theta f(x,\theta) + \nabla_\theta (\lambda \|\theta\|_{L^1}) = \nabla_\theta f(x) + 2\lambda \text{sign}(\theta)$$</center>
+where $\text{sign}(\theta)_i$ is $-1$ for $\theta_i < 0$ and $1$ for $\theta_i > 0$. Note that $\theta_i = 0$ is a point of discontinuity, so this logic doesn't apply here. We can handle the three cases separately. If $\theta_i < 0$, then it must be that 
+<center>$$\partial_{\theta_i} f(x,\theta) = 2\lambda.$$</center>
+If $\theta_i > 0$, it must be that 
+<center>$$\partial_{\theta_i} f(x,\theta) = -2\lambda.$$</center>
+In the case of regression, $\partial_{\theta_i} f(x,\theta) = x_i$ (why?). In other words, if $\theta_i$ is nonzero and we are at a minimum, then $x_i = \pm 2\lambda$. But this is impossible, unless we just happened to get a data point which is $\pm 2\lambda$. And even if we did, one property we generally expect of our models is some amount of stability with respect to the input data: even if the inputs are perturbed slightly, the model parameters we choose shouldn't change *that* much. This tells us that in $L^1$, our minima are forced to be in locations where at least one $\theta_i$ is zero. In that case, we cannot take the gradient, which is also why we can't find a closed form expression for $L^1$ regularized regression.
