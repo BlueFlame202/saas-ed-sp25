@@ -36,9 +36,14 @@ In other words, we expect the gradient of $f$ to be proportional to $\theta$. Bu
 On the other hand, if we had a loss with $L^1$,
 <center>$$L(x,\theta) = f(x,\theta) + \lambda \|\theta\|_{L^1}$$</center>
 so that at a minimum,
-<center>$$0 = \nabla L(x,\theta) = \nabla_\theta f(x,\theta) + \nabla_\theta (\lambda \|\theta\|_{L^1}) = \nabla_\theta f(x) + 2\lambda \text{sign}(\theta)$$</center>
+<center>$$0 = \nabla L(x,\theta) = \nabla_\theta f(x,\theta) + \nabla_\theta (\lambda \|\theta\|_{L^1}) = \nabla_\theta f(x) + \lambda \text{sign}(\theta)$$</center>
 where $\text{sign}(\theta)_i$ is $-1$ for $\theta_i < 0$ and $1$ for $\theta_i > 0$. Note that $\theta_i = 0$ is a point of discontinuity, so this logic doesn't apply here. We can handle the three cases separately. If $\theta_i < 0$, then it must be that 
-<center>$$\partial_{\theta_i} f(x,\theta) = 2\lambda.$$</center>
+<center>$$\partial_{\theta_i} f(x,\theta) = \lambda.$$</center>
 If $\theta_i > 0$, it must be that 
-<center>$$\partial_{\theta_i} f(x,\theta) = -2\lambda.$$</center>
-In the case of regression, $\partial_{\theta_i} f(x,\theta) = x_i$ (why?). In other words, if $\theta_i$ is nonzero and we are at a minimum, then $x_i = \pm 2\lambda$. But this is impossible, unless we just happened to get a data point which is $\pm 2\lambda$. And even if we did, one property we generally expect of our models is some amount of stability with respect to the input data: even if the inputs are perturbed slightly, the model parameters we choose shouldn't change *that* much. This tells us that in $L^1$, our minima are forced to be in locations where at least one $\theta_i$ is zero. In that case, we cannot take the gradient, which is also why we can't find a closed form expression for $L^1$ regularized regression.
+<center>$$\partial_{\theta_i} f(x,\theta) = -\lambda.$$</center>
+
+In the case of regression, $\partial_{\theta_i} f(x,\theta) = x_i^2\theta_i+2x_iy_i$ (why?). If $0 > \theta_i$, then,
+<center>$$0 > \theta_i > \dfrac{\lambda - 2x_i y_i}{x_i^2} \Rightarrow \dfrac{\lambda}{2} < x_iy_i$$</center>
+and if $0 < \theta_i$, then
+<center>$$0 < \theta_i < \dfrac{-\lambda - x_i y_i}{x_i^2} \Rightarrow -\dfrac{\lambda}{2} > x_iy_i$$.</center>
+Overall, $\theta_i$ being nonzero implies that $|x_iy_i| > \dfrac{\lambda}{2}$. In other words, as we keep increasing $\lambda$, after $\lambda \ge 2|x_i y_i|$, $\theta_i$ will become zero. This is sparsity.
