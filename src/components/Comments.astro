@@ -1,0 +1,53 @@
+---
+import CommentList from "./CommentList.astro";
+import CommentForm from "./CommentForm.astro";
+
+import type { Session } from '@auth/core/types';
+import { Auth, SignIn, SignOut } from 'auth-astro/components';
+import { getSession } from 'auth-astro/server';
+
+const session = await getSession(Astro.request);
+
+interface Props {
+    postSlug: string;
+}
+
+const { postSlug } = Astro.props;
+---
+
+<div class="comments-section mt-5">
+    <h2>Comments</h2>
+    <div>
+    {session ? (
+        <p class="mb-5">Welcome {session.user?.name}. Feel free to leave a comment! If you would like to remain anonymous, log out!</p>
+    ) : (
+        <p class="mb-5">Not signed in. Sign in with Google to make comments unanonymously!</p>
+    )}
+
+    <Auth>
+      {(session: Session) => {
+        if (session) {
+          return (
+              <SignOut class="px-4 py-2 rounded" style="background: var(--secondary-background)">
+                <a>
+                  Sign Out
+                </a>
+              </SignOut>
+          );
+        } else {
+          return <SignIn class="px-4 py-2 rounded" style="background: var(--secondary-background)" provider="google">
+                  <a>
+                  Sign In
+                  </a>
+                </SignIn>;
+        }
+      }}
+    </Auth>
+    <br/>
+    </div>
+
+    <div>
+        <CommentForm server:defer />
+        <CommentList postSlug={postSlug} server:defer />
+    </div>
+</div>
